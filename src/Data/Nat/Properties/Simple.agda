@@ -8,16 +8,4 @@
 
 module Data.Nat.Properties.Simple where
 
-open import Data.Nat.Properties public using
-  ( +-assoc
-  ; +-right-identity
-  ; +-left-identity
-  ; +-suc
-  ; +-comm
-  ; +-*-suc
-  ; *-right-zero
-  ; *-left-zero
-  ; *-comm
-  ; distribʳ-*-+
-  ; *-assoc
-  )
+open import Safe.Data.Nat.Properties.Simple public

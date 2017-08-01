@@ -8,7 +8,7 @@ module IO.Primitive where
 
 open import Data.Char.Base
 open import Data.String
-open import Foreign.Haskell
+open import Safe.Foreign.Haskell
 
 ------------------------------------------------------------------------
 -- The IO monad
@@ -38,10 +38,10 @@ postulate
 -- the locale. For older versions of the library (going back to at
 -- least version 3) the functions use ISO-8859-1.
 
-{-# FOREIGN GHC import qualified Data.Text    #-}
-{-# FOREIGN GHC import qualified Data.Text.IO #-}
-{-# FOREIGN GHC import qualified System.IO    #-}
-{-# FOREIGN GHC import qualified Control.Exception #-}
+{-# FOREIGN GHC import Safe.qualified Data.Text    #-}
+{-# FOREIGN GHC import Safe.qualified Data.Text.IO #-}
+{-# FOREIGN GHC import Safe.qualified System.IO    #-}
+{-# FOREIGN GHC import Safe.qualified Control.Exception #-}
 
 postulate
   getContents : IO Costring

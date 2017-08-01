@@ -51,6 +51,7 @@ isLibraryModule f =
   takeExtension f `elem` [".agda", ".lagda"]
   && dropExtension (takeFileName f) /= "Core"
   && dropExtension (takeFileName f) /= "index"
+  && not ("src/Safe" `List.isPrefixOf` fst (splitFileName f))
 
 -- | Reads a module and extracts the header.
 

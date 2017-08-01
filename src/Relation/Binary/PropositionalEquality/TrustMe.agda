@@ -6,7 +6,7 @@
 
 module Relation.Binary.PropositionalEquality.TrustMe where
 
-open import Relation.Binary.Core using (_≡_)
+open import Safe.Relation.Binary.Core using (_≡_)
 
 open import Agda.Builtin.TrustMe
 

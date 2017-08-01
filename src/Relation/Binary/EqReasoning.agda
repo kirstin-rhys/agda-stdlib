@@ -25,12 +25,7 @@
 
 open import Relation.Binary
 
+
 module Relation.Binary.EqReasoning {s₁ s₂} (S : Setoid s₁ s₂) where
 
-open Setoid S
-import Relation.Binary.PreorderReasoning as PreR
-open PreR preorder public
-       renaming ( _∼⟨_⟩_  to _≈⟨_⟩_
-                ; _≈⟨_⟩_  to _≡⟨_⟩_
-                ; _≈⟨⟩_  to _≡⟨⟩_
-                )
+open import Safe.Relation.Binary.EqReasoning S public

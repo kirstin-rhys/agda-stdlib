@@ -4,60 +4,25 @@
 -- Digits and digit expansions
 ------------------------------------------------------------------------
 
+
 module Data.Digit where
 
-open import Data.Nat
-open import Data.Nat.Properties
-open SemiringSolver
-open import Data.Fin as Fin using (Fin; zero; suc; toℕ)
-open import Relation.Nullary.Decidable
-open import Data.Char using (Char)
-open import Data.List.Base
-open import Data.Product
-open import Data.Vec as Vec using (Vec; _∷_; [])
-open import Induction.Nat using (<′-rec; <′-Rec)
+open import Safe.Data.Digit public
+
+open import Data.Char.Base using (Char)
+open import Safe.Data.Nat
 open import Data.Nat.DivMod
+open import Safe.Data.Nat.Properties
+open SemiringSolver
 open ≤-Reasoning
-open import Relation.Binary.PropositionalEquality as P using (_≡_; refl)
-open import Function
-
-------------------------------------------------------------------------
--- A boring lemma
-
-private
-
-  lem : ∀ x k r → 2 + x ≤′ r + (1 + x) * (2 + k)
-  lem x k r = ≤⇒≤′ $ begin
-    2 + x
-      ≤⟨ m≤m+n _ _ ⟩
-    2 + x + (x + (1 + x) * k + r)
-      ≡⟨ solve 3 (λ x r k → con 2 :+ x :+ (x :+ (con 1 :+ x) :* k :+ r)
-                              :=
-                            r :+ (con 1 :+ x) :* (con 2 :+ k))
-                 refl x r k ⟩
-    r + (1 + x) * (2 + k)
-      ∎
-
-------------------------------------------------------------------------
--- Digits
-
--- Digit b is the type of digits in base b.
-
-Digit : ℕ → Set
-Digit b = Fin b
-
--- Some specific digit kinds.
-
-Decimal = Digit 10
-Bit     = Digit 2
-
--- Some named digits.
-
-0b : Bit
-0b = zero
-
-1b : Bit
-1b = suc zero
+open import Safe.Data.Fin as Fin using (Fin; zero; suc; toℕ)
+open import Safe.Data.List.Base
+open import Safe.Data.Vec as Vec using (Vec; _∷_; [])
+open import Safe.Data.Product
+open import Safe.Induction.Nat using (<′-rec; <′-Rec)
+open import Safe.Function
+open import Safe.Relation.Nullary.Decidable
+open import Safe.Relation.Binary.PropositionalEquality as P using (_≡_; refl)
 
 ------------------------------------------------------------------------
 -- Showing digits
@@ -77,15 +42,21 @@ showDigit {base≤16 = base≤16} d =
   Vec.lookup (Fin.inject≤ d (toWitness base≤16)) digitChars
 
 ------------------------------------------------------------------------
--- Digit expansions
+-- A boring lemma
 
--- fromDigits takes a digit expansion of a natural number, starting
--- with the _least_ significant digit, and returns the corresponding
--- natural number.
+private
 
-fromDigits : ∀ {base} → List (Fin base) → ℕ
-fromDigits        []       = 0
-fromDigits {base} (d ∷ ds) = toℕ d + fromDigits ds * base
+  lem : ∀ x k r → 2 + x ≤′ r + (1 + x) * (2 + k)
+  lem x k r = ≤⇒≤′ $ begin
+    2 + x
+      ≤⟨ m≤m+n _ _ ⟩
+    2 + x + (x + (1 + x) * k + r)
+      ≡⟨ solve 3 (λ x r k → con 2 :+ x :+ (x :+ (con 1 :+ x) :* k :+ r)
+                              :=
+                            r :+ (con 1 :+ x) :* (con 2 :+ k))
+                 refl x r k ⟩
+    r + (1 + x) * (2 + k)
+      ∎
 
 -- toDigits b n yields the digits of n, in base b, starting with the
 -- _least_ significant digit.

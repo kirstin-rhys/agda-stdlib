@@ -4,12 +4,14 @@
 -- Strings
 ------------------------------------------------------------------------
 
+
 module Data.String.Base where
 
-open import Data.List.Base as List using (_∷_; []; List)
-open import Data.Bool.Base using (Bool)
+
+open import Safe.Data.List.Base as List using (_∷_; []; List)
+open import Safe.Data.Bool.Base using (Bool)
 open import Data.Char.Core using (Char)
-open import Relation.Binary.Core using (_≡_)
+open import Safe.Relation.Binary.Core using (_≡_)
 open import Relation.Binary.PropositionalEquality.TrustMe using (trustMe)
 
 ------------------------------------------------------------------------

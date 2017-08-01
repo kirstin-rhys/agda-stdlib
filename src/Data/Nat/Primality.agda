@@ -4,24 +4,18 @@
 -- Primality
 ------------------------------------------------------------------------
 
+
 module Data.Nat.Primality where
 
-open import Data.Empty
-open import Data.Fin as Fin hiding (_+_)
-open import Data.Fin.Dec
-open import Data.Nat
+open import Safe.Data.Nat.Primality public
+
+open import Safe.Data.Nat
 open import Data.Nat.Divisibility
-open import Relation.Nullary
-open import Relation.Nullary.Decidable
-open import Relation.Nullary.Negation
-open import Relation.Unary
-
--- Definition of primality.
-
-Prime : ℕ → Set
-Prime 0             = ⊥
-Prime 1             = ⊥
-Prime (suc (suc n)) = (i : Fin n) → ¬ (2 + Fin.toℕ i ∣ 2 + n)
+open import Safe.Data.Fin.Dec
+open import Safe.Relation.Nullary
+open import Safe.Relation.Nullary.Decidable
+open import Safe.Relation.Nullary.Negation
+open import Safe.Relation.Unary
 
 -- Decision procedure for primality.
 
