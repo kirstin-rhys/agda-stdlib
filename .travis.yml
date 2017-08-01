@@ -2,6 +2,7 @@ language: c
 branches:
   only:
   - master
+  - safe
 
 sudo: false
 
