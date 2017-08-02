@@ -1,5 +1,5 @@
 #/bin/bash
-if [ "$1" ] && [ ${1} != "" ]
+if [ "$1" ]
 then
   echo -e "module $1.index where\n" > src/${1}/index.agda
 fi
