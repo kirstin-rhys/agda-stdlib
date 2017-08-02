@@ -58,6 +58,9 @@ install:
   # generating Everything.agda
   - cd $HOME/build/agda/agda-stdlib
   - runghc GenerateEverything.hs
+  # testing that the Safe modules are safe
+  - ./index.sh Safe
+  - agda -i. -isrc/ --ignore-interfaces --safe src/Safe/index.agda
 
 script:
   # generating index.agda
