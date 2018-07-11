@@ -10,6 +10,7 @@ open import Algebra
 open import Algebra.FunctionProperties
 open import Algebra.Structures
 open import Data.List.Base as List
+open Notation
 open import Data.List.Relation.Permutation.Inductive
 open import Data.List.Any using (Any; here; there)
 open import Data.List.All using (All; []; _∷_)
@@ -199,7 +200,7 @@ module _ {a} {A : Set a} where
     x ∷ xs ++ ys         ↭⟨ prep x (++-comm xs ys) ⟩
     x ∷ ys ++ xs         ≡⟨ cong (λ v → x ∷ v ++ xs) (≡.sym (Lₚ.++-identityʳ _)) ⟩
     (x ∷ ys ++ []) ++ xs ↭⟨ ++⁺ʳ xs (↭-sym (shift x ys [])) ⟩
-    (ys ++ [ x ]) ++ xs  ↭⟨ ++-assoc ys [ x ] xs ⟩
+    (ys ++ [ x ]) ++ xs  ↭⟨ ++-assoc ys ([ x ]) xs ⟩
     ys ++ ([ x ] ++ xs)  ≡⟨⟩
     ys ++ (x ∷ xs)       ∎
 

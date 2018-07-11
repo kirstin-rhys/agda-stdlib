@@ -8,9 +8,10 @@ module Data.List.Zipper.Properties where
 
 open import Data.Maybe.Base as Maybe using (Maybe ; just ; nothing)
 open import Data.List.Base as List using (List ; [] ; _∷_)
+open List.Notation
 open import Data.List.Properties
 open import Data.List.Zipper
-open import Relation.Binary.PropositionalEquality
+open import Relation.Binary.PropositionalEquality hiding ([_])
 open ≡-Reasoning
 open import Function
 
@@ -26,8 +27,8 @@ module _ {a} {A : Set a} where
  toList-left-identity (mkZipper (x ∷ ctx) val) = just $′ begin
    List.reverse (x ∷ ctx) List.++ val
      ≡⟨ cong (List._++ val) (unfold-reverse x ctx) ⟩
-   (List.reverse ctx List.++ List.[ x ]) List.++ val
-     ≡⟨ ++-assoc (List.reverse ctx) List.[ x ] val ⟩
+   (List.reverse ctx List.++ [ x ]) List.++ val
+     ≡⟨ ++-assoc (List.reverse ctx) ([ x ]) val ⟩
    toList (mkZipper ctx (x ∷ val))
      ∎
 
@@ -35,8 +36,8 @@ module _ {a} {A : Set a} where
  toList-right-identity (mkZipper ctx [])        = nothing
  toList-right-identity (mkZipper ctx (x ∷ val)) = just $′ begin
    List.reverse ctx List.++ x ∷ val
-     ≡⟨ sym (++-assoc (List.reverse ctx) List.[ x ] val) ⟩
-   (List.reverse ctx List.++ List.[ x ]) List.++ val
+     ≡⟨ sym (++-assoc (List.reverse ctx) ([ x ]) val) ⟩
+   (List.reverse ctx List.++ [ x ]) List.++ val
      ≡⟨ cong (List._++ val) (sym (unfold-reverse x ctx)) ⟩
    List.reverse (x ∷ ctx) List.++ val
      ∎

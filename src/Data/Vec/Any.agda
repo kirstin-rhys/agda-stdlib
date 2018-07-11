@@ -9,7 +9,7 @@ module Data.Vec.Any {a} {A : Set a} where
 open import Data.Empty
 open import Data.Fin
 open import Data.Nat using (zero; suc)
-open import Data.Vec as Vec using (Vec; []; [_]; _∷_)
+open import Data.Vec as Vec using (Vec; []; _∷_)
 open import Data.Product as Prod using (∃; _,_)
 open import Level using (_⊔_)
 open import Relation.Nullary using (¬_; yes; no)

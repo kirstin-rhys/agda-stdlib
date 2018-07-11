@@ -9,6 +9,7 @@ module Data.List.Zipper where
 open import Data.Nat.Base
 open import Data.Maybe.Base as Maybe using (Maybe ; just ; nothing)
 open import Data.List.Base as List using (List ; [] ; _∷_)
+open List.Notation
 open import Function
 
 
@@ -109,7 +110,7 @@ module _ {a b} {A : Set a} {B : Set b} where
 module _ {a} {A : Set a} where
 
  allFociIn : List A → List A → List (Zipper A)
- allFociIn ctx []           = List.[ mkZipper ctx [] ]
+ allFociIn ctx []           = [ mkZipper ctx [] ]
  allFociIn ctx xxs@(x ∷ xs) = mkZipper ctx xxs ∷ allFociIn (x ∷ ctx) xs
 
  allFoci : List A → List (Zipper A)

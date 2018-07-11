@@ -24,6 +24,22 @@ data Vec {a} (A : Set a) : ℕ → Set a where
   []  : Vec A zero
   _∷_ : ∀ {n} (x : A) (xs : Vec A n) → Vec A (suc n)
 
+module Notation {a} {A : Set a} where
+
+  infix  6 [_
+  infixr 7 _，_
+  infix  8 _]
+
+  -- [_ : Vec A n → Vec A n
+  pattern [_ xs = xs
+
+  -- _，_ : A → Vec A n → Vec A (suc n)
+  pattern _，_ a as = a ∷ as
+
+  --  _] : A → Vec A 1
+  pattern _] x = x ∷ []
+open Notation
+
 infix 4 _[_]=_
 
 data _[_]=_ {a} {A : Set a} :
@@ -174,9 +190,6 @@ count P? (x ∷ xs) with P? x
 
 ------------------------------------------------------------------------
 -- Operations for building vectors
-
-[_] : ∀ {a} {A : Set a} → A → Vec A 1
-[ x ] = x ∷ []
 
 replicate : ∀ {a n} {A : Set a} → A → Vec A n
 replicate {n = zero}  x = []

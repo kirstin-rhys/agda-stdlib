@@ -8,7 +8,7 @@ module Data.Vec.Relation.Pointwise.Extensional where
 
 open import Data.Fin using (zero; suc)
 open import Data.Nat using (zero; suc)
-open import Data.Vec as Vec hiding ([_]; head; tail; map)
+open import Data.Vec as Vec hiding (head; tail; map)
 open import Data.Vec.Relation.Pointwise.Inductive as Inductive
   using ([]; _∷_)
   renaming (Pointwise to IPointwise)

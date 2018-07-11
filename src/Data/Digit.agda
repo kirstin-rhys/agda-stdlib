@@ -12,6 +12,7 @@ open SemiringSolver
 open import Data.Fin as Fin using (Fin; zero; suc; toℕ)
 open import Data.Char using (Char)
 open import Data.List.Base
+open Notation
 open import Data.Product
 open import Data.Vec as Vec using (Vec; _∷_; [])
 open import Data.Nat.DivMod

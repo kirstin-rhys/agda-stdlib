@@ -24,6 +24,22 @@ open import Relation.Unary.Properties using (∁?)
 open import Agda.Builtin.List public
   using (List; []; _∷_)
 
+module Notation {a} {A : Set a} where
+
+  infix  6 [_
+  infixr 7 _，_
+  infix  8 _]
+
+  -- [_ : List A → List A
+  pattern [_ xs = xs
+
+  -- _，_ : A → List A → List A
+  pattern _，_ a as = a ∷ as
+
+  --  _] : A → List A
+  pattern _] x = x ∷ []
+open Notation
+
 ------------------------------------------------------------------------
 -- Operations for transforming lists
 
@@ -111,9 +127,6 @@ length = foldr (λ _ → suc) 0
 
 ------------------------------------------------------------------------
 -- Operations for constructing lists
-
-[_] : ∀ {a} {A : Set a} → A → List A
-[ x ] = x ∷ []
 
 fromMaybe : ∀ {a} {A : Set a} → Maybe A → List A
 fromMaybe (just x) = [ x ]

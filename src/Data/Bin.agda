@@ -13,6 +13,7 @@ open import Data.Fin as Fin using (Fin; zero)
   renaming (suc to 1+_)
 open import Data.Fin.Properties as FP using (_+′_)
 open import Data.List.Base as List hiding (downFrom)
+open Notation
 open import Function
 open import Data.Product using (uncurry; _,_; _×_)
 open import Relation.Binary
@@ -79,8 +80,8 @@ private
 
   ntoBits′ : ℕ → ℕ → List Bit
   ntoBits′     0      _  = []
-  ntoBits′     1      0  = 0b ∷ 1b ∷ []
-  ntoBits′     1      1  = 1b ∷ []
+  ntoBits′     1      0  = [ 0b ， 1b ]
+  ntoBits′     1      1  = [ 1b ]
   ntoBits′ (2+ k)     0  = 0b ∷ ntoBits′ (1+ k) k
   ntoBits′ (2+ k)     1  = 1b ∷ ntoBits′ (1+ k) (1+ k)
   ntoBits′ (1+ k) (2+ n) = ntoBits′ k n

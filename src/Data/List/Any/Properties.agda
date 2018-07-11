@@ -15,6 +15,7 @@ open import Data.Bool.Properties
 open import Data.Empty using (⊥)
 open import Data.Fin using (Fin) renaming (zero to fzero; suc to fsuc)
 open import Data.List as List
+open Notation
 open import Data.List.Categorical using (monad)
 open import Data.List.Any as Any using (Any; here; there)
 open import Data.List.Membership.Propositional
@@ -285,10 +286,10 @@ module _ {a b p q} {A : Set a} {B : Set b}
 
 module _ {a p} {A : Set a} {P : Pred A p} where
 
-  singleton⁺ : ∀ {x} → P x → Any P [ x ]
+  singleton⁺ : ∀ {x} → P x → Any P ([ x ])
   singleton⁺ Px = here Px
 
-  singleton⁻ : ∀ {x} → Any P [ x ] → P x
+  singleton⁻ : ∀ {x} → Any P ([ x ]) → P x
   singleton⁻ (here Px) = Px
   singleton⁻ (there ())
 
@@ -590,9 +591,9 @@ module _ {a p} {A : Set a} where
 
   ∷↔ : ∀ (P : Pred A p) {x xs} → (P x ⊎ Any P xs) ↔ Any P (x ∷ xs)
   ∷↔ P {x} {xs} =
-    (P x         ⊎ Any P xs)  ↔⟨ return↔ {P = P} ⊎-cong (Any P xs ∎) ⟩
-    (Any P [ x ] ⊎ Any P xs)  ↔⟨ ++↔ {P = P} {xs = [ x ]} ⟩
-    Any P (x ∷ xs)            ∎
+    (P x           ⊎ Any P xs)  ↔⟨ return↔ {P = P} ⊎-cong (Any P xs ∎) ⟩
+    (Any P ([ x ]) ⊎ Any P xs)  ↔⟨ ++↔ {P = P} {xs = [ x ]} ⟩
+    Any P (x ∷ xs)              ∎
 
 ------------------------------------------------------------------------
 -- _>>=_

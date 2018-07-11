@@ -15,6 +15,7 @@ open import Algebra.FunctionProperties
 import Algebra.Monoid-solver
 open import Data.Bool.Base using (Bool; false; true; not; if_then_else_)
 open import Data.List as List
+open Notation
 open import Data.List.All using (All; []; _∷_)
 open import Data.List.Any using (Any; here; there)
 open import Data.Maybe.Base using (Maybe; just; nothing)
@@ -143,7 +144,7 @@ module _ {a} {A : Set a} where
   ++-identityˡ-unique {xs = x ∷ xs} (y ∷ ys) eq
     with ++-identityˡ-unique (ys ++ [ x ]) (begin
          xs                  ≡⟨ proj₂ (∷-injective eq) ⟩
-         ys ++ x ∷ xs        ≡⟨ P.sym (++-assoc ys [ x ] xs) ⟩
+         ys ++ x ∷ xs        ≡⟨ P.sym (++-assoc ys ([ x ]) xs) ⟩
          (ys ++ [ x ]) ++ xs ∎)
     where open P.≡-Reasoning
   ++-identityˡ-unique {xs = x ∷ xs} (y ∷ []   ) eq | ()
@@ -543,7 +544,7 @@ module _ {a p} {A : Set a} {P : A → Set p} (P? : Decidable P) where
 module _ {a} {A : Set a} where
 
   unfold-reverse : ∀ (x : A) xs → reverse (x ∷ xs) ≡ reverse xs ∷ʳ x
-  unfold-reverse x xs = helper [ x ] xs
+  unfold-reverse x xs = helper ([ x ]) xs
     where
     open P.≡-Reasoning
     helper : (xs ys : List A) → foldl (flip _∷_) xs ys ≡ reverse ys ++ xs

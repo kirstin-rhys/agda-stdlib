@@ -11,6 +11,7 @@ module Algebra.Monoid-solver {m₁ m₂} (M : Monoid m₁ m₂) where
 open import Data.Fin as Fin hiding (_≟_)
 import Data.Fin.Properties as Fin
 open import Data.List.Base hiding (lookup)
+open Notation
 import Data.List.Relation.Equality.DecPropositional as ListEq
 open import Data.Maybe as Maybe
   using (Maybe; decToMaybe; From-just; from-just)
@@ -71,7 +72,7 @@ Normal n = List (Fin n)
 -- A normaliser.
 
 normalise : ∀ {n} → Expr n → Normal n
-normalise (var x)   = x ∷ []
+normalise (var x)   = [ x ]
 normalise id        = []
 normalise (e₁ ⊕ e₂) = normalise e₁ ++ normalise e₂
 

@@ -23,6 +23,7 @@ open import Function.Inverse as Inv using (_↔_; module Inverse)
 import Function.Related as Related
 open import Function.Related.TypeIsomorphisms
 open import Data.List as List
+open Notation
 open import Data.List.Any as Any using (Any; here; there)
 open import Data.List.Any.Properties
 open import Data.List.Membership.Propositional

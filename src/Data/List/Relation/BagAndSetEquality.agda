@@ -10,6 +10,7 @@ open import Algebra using (CommutativeSemiring; CommutativeMonoid)
 open import Algebra.FunctionProperties using (Idempotent)
 open import Category.Monad using (RawMonad)
 open import Data.List
+open Notation
 open import Data.List.Categorical using (monad; module MonadProperties)
 import Data.List.Properties as LP
 open import Data.List.Any using (Any; here; there)
@@ -280,8 +281,8 @@ private
   ¬-drop-cons {x = x} drop-cons
     with FE.Equivalence.to x∼[] ⟨$⟩ here P.refl
     where
-    x,x≈x :  (x ∷ x ∷ []) ∼[ set ] [ x ]
-    x,x≈x = ++-idempotent [ x ]
+    x,x≈x : [ x ， x ] ∼[ set ] [ x ]
+    x,x≈x = ++-idempotent ([ x ])
 
     x∼[] : [ x ] ∼[ set ] []
     x∼[] = drop-cons x,x≈x

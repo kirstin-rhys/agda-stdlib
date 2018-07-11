@@ -11,6 +11,7 @@ open import Data.Bool.Properties
 open import Data.Empty
 open import Data.Fin using (Fin) renaming (zero to fzero; suc to fsuc)
 open import Data.List.Base
+open Notation
 open import Data.List.Membership.Propositional
 open import Data.List.All as All using (All; []; _∷_)
 open import Data.List.Any using (Any; here; there)
@@ -268,7 +269,7 @@ module _ {a b c} {A : Set a} {B : Set b} {C : Set c} where
 
 module _ {a p} {A : Set a} {P : A → Set p} where
 
-  singleton⁻ : ∀ {x} → All P [ x ] → P x
+  singleton⁻ : ∀ {x} → All P ([ x ]) → P x
   singleton⁻ (px ∷ []) = px
 
 ------------------------------------------------------------------------

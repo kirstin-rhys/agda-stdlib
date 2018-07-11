@@ -10,7 +10,7 @@ open import Algebra.FunctionProperties
 open import Data.Fin using (Fin; zero; suc)
 open import Data.Nat using (ℕ; suc)
 open import Data.Product using (_×_; _,_)
-open import Data.Vec as Vec hiding ([_]; head; tail; map; lookup)
+open import Data.Vec as Vec hiding (head; tail; map; lookup)
 open import Data.Vec.All using (All; []; _∷_)
 open import Level using (_⊔_)
 open import Function using (_∘_)

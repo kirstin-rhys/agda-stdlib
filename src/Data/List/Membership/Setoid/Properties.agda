@@ -9,6 +9,7 @@ module Data.List.Membership.Setoid.Properties where
 open import Algebra.FunctionProperties using (Op₂; Selective)
 open import Data.Fin using (Fin; zero; suc)
 open import Data.List
+open Notation
 open import Data.List.Any as Any using (Any; here; there)
 import Data.List.Any.Properties as Any
 import Data.List.Membership.Setoid as Membership
