@@ -19,6 +19,10 @@ Bug-fixes
 * Remove unbound parameter from `Data.List.Properties.length-alignWith`,
   `alignWith-map` and `map-alignWith`.
 
+* Adds `XdgState` constructor to `XdgDirectory` in
+  `System.Directory.Primitive` so that `listDirectory` et alia work
+  with haskell `directory-1.2.3.0` and at least `ghc 9.4.8`
+
 Non-backwards compatible changes
 --------------------------------
 
